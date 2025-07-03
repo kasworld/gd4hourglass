@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj1pdhawsxt6b"]
+
+[ext_resource type="Script" uid="uid://tlc0hcmltb3y" path="res://char.gd" id="1_njpxk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5k12k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njpxk"]
+resource_local_to_scene = true
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njpxk"]
+resource_local_to_scene = true
+
+[sub_resource type="TextMesh" id="TextMesh_5k12k"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_njpxk")
+text = "H"
+font_size = 14
+pixel_size = 0.1
+depth = 0.1
+
+[node name="Char" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_5k12k")
+max_contacts_reported = 9
+script = ExtResource("1_njpxk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_njpxk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TextMesh_5k12k")
