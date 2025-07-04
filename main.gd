@@ -20,6 +20,31 @@ func _process(delta: float) -> void:
 			).set_color(random_color()
 			).set_radius(0.3
 		)))
+		$DropContainer.add_child(rand_pos_rot(
+			preload("res://char.tscn").instantiate(
+			).init(Vector3.ZERO, Vector3.ZERO
+			).set_color(random_color()
+			).set_height_depth(0.8,0.1
+			).set_char(PlayingCard.Symbols.pick_random()
+		)))
+		$DropContainer.add_child(rand_pos_rot(
+			preload("res://coin.tscn").instantiate(
+			).init(Vector3.ZERO, Vector3.ZERO
+			).set_color(random_color()
+			).set_radius_height(0.4,0.1
+		)))
+		$DropContainer.add_child(rand_pos_rot(
+			preload("res://capsule.tscn").instantiate(
+			).init(Vector3.ZERO, Vector3.ZERO
+			).set_color(random_color()
+			).set_radius_height(0.2,0.8
+		)))
+		$DropContainer.add_child(rand_pos_rot(
+			preload("res://dice.tscn").instantiate(
+			).init(Vector3.ZERO, Vector3.ZERO
+			).set_color(random_color()
+			).set_size( Vector3(0.5, 0.5, 0.5)
+		)))
 	update_label()
 	var t = Time.get_unix_time_from_system() /-3.0
 	if camera_move:

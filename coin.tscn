@@ -5,7 +5,6 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0t63x"]
 resource_local_to_scene = true
 friction = 0.0
-bounce = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v7riw"]
 resource_local_to_scene = true
