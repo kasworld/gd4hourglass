@@ -5,7 +5,7 @@ var deck
 func _ready() -> void:
 	var vp_size = get_viewport().get_visible_rect().size
 	var 짧은길이 = min(vp_size.x,vp_size.y)
-	$"왼쪽패널".size = Vector2(vp_size.x/2 - 짧은길이/2, vp_size.y)
+	#$"왼쪽패널".size = Vector2(vp_size.x/2 - 짧은길이, vp_size.y)
 
 	reset_camera_pos()
 
@@ -20,17 +20,10 @@ func _process(delta: float) -> void:
 			).set_color(random_color()
 			).set_radius(0.3
 		)))
-		#$DropContainer.add_child(rand_pos_rot(
-			#preload("res://char.tscn").instantiate(
-			#).init(Vector3.ZERO, Vector3.ZERO
-			#).set_char(deck.pick_random()
-			#).set_color(random_color()
-			#).set_height_depth(0.6,0.1
-		#)))
 	update_label()
 	var t = Time.get_unix_time_from_system() /-3.0
 	if camera_move:
-		$Camera3D.position = Vector3(sin(t)*10, sin(t)*5+5, cos(t)*10)
+		$Camera3D.position = Vector3(sin(t)*10, sin(t)*8, cos(t)*10)
 		$Camera3D.look_at(Vector3.ZERO)
 
 func update_label() -> void:
@@ -51,6 +44,7 @@ func random_color() -> Color:
 var key2fn = {
 	KEY_ESCAPE:_on_button_esc_pressed,
 	KEY_ENTER:_on_카메라변경_pressed,
+	KEY_SPACE:_on_중력반전_pressed,
 }
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
@@ -63,7 +57,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_button_esc_pressed() -> void:
 	get_tree().quit()
 
-
 func _on_카메라변경_pressed() -> void:
 	camera_move = !camera_move
 	if camera_move == false:
@@ -73,3 +66,9 @@ func reset_camera_pos()->void:
 	$Camera3D.position = Vector3(1,10,0)
 	$Camera3D.look_at(Vector3.ZERO)
 	$Camera3D.far = 50
+
+func _on_중력반전_pressed() -> void:
+	var current_gravity :Vector3 = PhysicsServer3D.area_get_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR )
+	# Set the default gravity direction to `Vector3(0, -1, 0)`.
+	#PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, Vector3.DOWN)	
+	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, -current_gravity)	
