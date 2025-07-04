@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://77755d2wkde0"]
+[gd_scene load_steps=6 format=3 uid="uid://77755d2wkde0"]
 
 [ext_resource type="Script" uid="uid://7lxpeq7pdhao" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://2s14pnvkeo8t" path="res://glass_cube.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dwv6qfmupuvqj" path="res://wall.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c1a8d2vgrvllr" path="res://glass_cylinder.tscn" id="3_lquwl"]
 
 [sub_resource type="Theme" id="Theme_h2yge"]
 default_font_size = 48
@@ -30,24 +31,6 @@ transform = Transform3D(-0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, 0
 shadow_enabled = true
 sky_mode = 1
 
-[node name="WallBottom" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
-
-[node name="WallNorth" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -10)
-
-[node name="WallSouth" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 10)
-
-[node name="WallWest" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -10, 0, 0)
-
-[node name="WallEast" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10, 0, 0)
-
-[node name="WallTop" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 10, 0)
-
 [node name="DropContainer" type="Node3D" parent="."]
 
 [node name="왼쪽패널" type="VBoxContainer" parent="."]
@@ -62,16 +45,53 @@ layout_mode = 2
 layout_mode = 2
 text = "중력반전"
 
-[node name="GlassCube1" parent="." instance=ExtResource("3_1bvp3")]
+[node name="CubeContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+
+[node name="GlassCube1" parent="CubeContainer" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 15, 0, 0)
 
-[node name="GlassCube2" parent="." instance=ExtResource("3_1bvp3")]
+[node name="GlassCube2" parent="CubeContainer" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -15, 0, 0)
 
-[node name="GlassCube3" parent="." instance=ExtResource("3_1bvp3")]
+[node name="GlassCube3" parent="CubeContainer" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 15)
 
-[node name="GlassCube4" parent="." instance=ExtResource("3_1bvp3")]
+[node name="GlassCube4" parent="CubeContainer" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, -15)
+
+[node name="CylinderContainer" type="Node3D" parent="."]
+
+[node name="GlassCylinder" parent="CylinderContainer" instance=ExtResource("3_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+
+[node name="GlassCylinder2" parent="CylinderContainer" instance=ExtResource("3_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+
+[node name="GlassCylinder3" parent="CylinderContainer" instance=ExtResource("3_lquwl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 11)
+
+[node name="GlassCylinder4" parent="CylinderContainer" instance=ExtResource("3_lquwl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -11)
+
+[node name="WallContainer" type="Node3D" parent="."]
+
+[node name="WallBottom" parent="WallContainer" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="WallNorth" parent="WallContainer" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -10)
+
+[node name="WallSouth" parent="WallContainer" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 10)
+
+[node name="WallWest" parent="WallContainer" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="WallEast" parent="WallContainer" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="WallTop" parent="WallContainer" instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 10, 0)
 
 [connection signal="pressed" from="왼쪽패널/중력반전" to="." method="_on_중력반전_pressed"]

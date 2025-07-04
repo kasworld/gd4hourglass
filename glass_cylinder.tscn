@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1a8d2vgrvllr"]
+
+[ext_resource type="Script" uid="uid://cxdyfyo6sctly" path="res://glass_cylinder.gd" id="1_17qd6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ivru2"]
+friction = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_17qd6"]
+height = 20.0
+radius = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3a3pc"]
+transparency = 1
+albedo_color = Color(0, 0, 1, 0.490196)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rygi4"]
+material = SubResource("StandardMaterial3D_3a3pc")
+top_radius = 10.0
+bottom_radius = 10.0
+height = 20.0
+
+[node name="GlassCylinder" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_ivru2")
+script = ExtResource("1_17qd6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_17qd6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_rygi4")
