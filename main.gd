@@ -1,6 +1,6 @@
 extends Node3D
 
-const MaxDrop = 10000
+const MaxDrop = 2000
 var deck 
 func _ready() -> void:
 	var vp_size = get_viewport().get_visible_rect().size
@@ -20,13 +20,13 @@ func _process(delta: float) -> void:
 			).set_color(random_color()
 			).set_radius(0.3
 		)))
-		$DropContainer.add_child(rand_pos_rot(
-			preload("res://char.tscn").instantiate(
-			).init(Vector3.ZERO, Vector3.ZERO
-			).set_char(deck.pick_random()
-			).set_color(random_color()
-			).set_height_depth(1,0.1
-		)))
+		#$DropContainer.add_child(rand_pos_rot(
+			#preload("res://char.tscn").instantiate(
+			#).init(Vector3.ZERO, Vector3.ZERO
+			#).set_char(deck.pick_random()
+			#).set_color(random_color()
+			#).set_height_depth(0.6,0.1
+		#)))
 	update_label()
 	var t = Time.get_unix_time_from_system() /-3.0
 	if camera_move:
@@ -37,7 +37,7 @@ func update_label() -> void:
 	$"왼쪽패널/Label".text = "%s/%s" %[$DropContainer.get_child_count(), MaxDrop ]
 
 func rand_pos_rot(n :Node3D) -> Node3D:
-	n.position = Vector3(randf_range(-1,1),randf_range(7,9),randf_range(-1,1))
+	n.position = Vector3(randf_range(-10,10),randf_range(8,10),randf_range(-10,10))
 	#n.position = Vector3(0, 9, 0)
 	n.rotation = Vector3(randf_range(-PI,PI),randf_range(-PI,PI),randf_range(-PI,PI))
 	return n

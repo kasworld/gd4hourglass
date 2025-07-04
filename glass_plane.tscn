@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://2s14pnvkeo8t"]
+
+[ext_resource type="Script" uid="uid://dgv56oynu0gqa" path="res://glass_plane.gd" id="1_afi5d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_afi5d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_afi5d"]
+resource_local_to_scene = true
+size = Vector3(20, 20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afi5d"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 0, 0.494118)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qcpoa"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_afi5d")
+size = Vector3(20, 20, 20)
+
+[node name="GlassPlane" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_afi5d")
+script = ExtResource("1_afi5d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_afi5d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qcpoa")

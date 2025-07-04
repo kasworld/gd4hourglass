@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://77755d2wkde0"]
+[gd_scene load_steps=4 format=3 uid="uid://77755d2wkde0"]
 
 [ext_resource type="Script" uid="uid://7lxpeq7pdhao" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://2s14pnvkeo8t" path="res://glass_plane.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dwv6qfmupuvqj" path="res://wall.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node3D"]
@@ -53,3 +54,15 @@ offset_bottom = 40.0
 [node name="Label" type="Label" parent="왼쪽패널"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
+
+[node name="GlassPlane" parent="." instance=ExtResource("3_1bvp3")]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="GlassPlane2" parent="." instance=ExtResource("3_1bvp3")]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -15, 0, 0)
+
+[node name="GlassPlane3" parent="." instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 15)
+
+[node name="GlassPlane4" parent="." instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, -15)

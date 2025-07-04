@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dofyafqd7rbee" path="res://ball.gd" id="1_x8fbi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x8fbi"]
+friction = 0.0
+bounce = 0.1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x8fbi"]
 resource_local_to_scene = true
