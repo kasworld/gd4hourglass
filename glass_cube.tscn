@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://2s14pnvkeo8t"]
 
-[ext_resource type="Script" uid="uid://dgv56oynu0gqa" path="res://glass_plane.gd" id="1_afi5d"]
+[ext_resource type="Script" uid="uid://dgv56oynu0gqa" path="res://glass_cube.gd" id="1_afi5d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_afi5d"]
 
@@ -18,7 +18,7 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_afi5d")
 size = Vector3(20, 20, 20)
 
-[node name="GlassPlane" type="StaticBody3D"]
+[node name="GlassCube" type="StaticBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_afi5d")
 script = ExtResource("1_afi5d")
 
