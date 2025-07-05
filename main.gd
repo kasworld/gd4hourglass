@@ -11,32 +11,32 @@ func _process(delta: float) -> void:
 			preload("res://ball.tscn").instantiate(
 			).init(Vector3.ZERO, Vector3.ZERO
 			).set_color(random_color()
-			).set_radius(0.25
+			).set_radius(randfn(0.25, 0.05)
 		)))
 		$DropContainer.add_child(rand_pos_rot(
 			preload("res://char.tscn").instantiate(
 			).init(Vector3.ZERO, Vector3.ZERO
 			).set_color(random_color()
-			).set_height_depth(0.8,0.1
+			).set_height_depth( randfn(0.8, 0.1), randfn(0.1,0.01)
 			).set_char(PlayingCard.Symbols.pick_random()
 		)))
 		$DropContainer.add_child(rand_pos_rot(
 			preload("res://coin.tscn").instantiate(
 			).init(Vector3.ZERO, Vector3.ZERO
 			).set_color(random_color()
-			).set_radius_height(0.4,0.1
+			).set_radius_height( randfn(0.4,0.05), randfn(0.1,0.01)
 		)))
 		$DropContainer.add_child(rand_pos_rot(
 			preload("res://capsule.tscn").instantiate(
 			).init(Vector3.ZERO, Vector3.ZERO
 			).set_color(random_color()
-			).set_radius_height(0.2,0.8
+			).set_radius_height( randfn(0.2,0.05), randfn(0.8,0.05)
 		)))
 		$DropContainer.add_child(rand_pos_rot(
 			preload("res://dice.tscn").instantiate(
 			).init(Vector3.ZERO, Vector3.ZERO
 			).set_color(random_color()
-			).set_size( Vector3(0.4, 0.4, 0.4)
+			).set_size( Vector3( randfn(0.4,0.05), randfn(0.4,0.05), randfn(0.4,0.05) )
 		)))
 	update_label()
 	var t = Time.get_unix_time_from_system() /-3.0
