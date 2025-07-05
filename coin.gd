@@ -22,9 +22,10 @@ func get_color() -> Color:
 	return $MeshInstance3D.mesh.material.albedo_color
 
 func set_radius_height(r :float, h:float) -> Coin:
-	$MeshInstance3D.mesh.top_radius = r
-	$MeshInstance3D.mesh.bottom_radius = r
-	$MeshInstance3D.mesh.height = h
+	#$MeshInstance3D.mesh.top_radius = r
+	#$MeshInstance3D.mesh.bottom_radius = r
+	$MeshInstance3D.mesh.radius = r
+	$MeshInstance3D.mesh.height = h*2
 	$CollisionShape3D.shape.radius = r
 	$CollisionShape3D.shape.height = h
 	return self

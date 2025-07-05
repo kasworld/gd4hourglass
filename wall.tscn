@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://ckravbf36j81l" path="res://wall.gd" id="1_xxgf6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0xm2m"]
+friction = 0.8
+bounce = 0.2
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0xm2m"]
 

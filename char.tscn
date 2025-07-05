@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://tlc0hcmltb3y" path="res://char.gd" id="1_njpxk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5k12k"]
-friction = 0.0
+friction = 0.5
+bounce = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_njpxk"]
 resource_local_to_scene = true

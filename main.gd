@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 			preload("res://ball.tscn").instantiate(
 			).init(Vector3.ZERO, Vector3.ZERO
 			).set_color(random_color()
-			).set_radius(0.3
+			).set_radius(0.25
 		)))
 		$DropContainer.add_child(rand_pos_rot(
 			preload("res://char.tscn").instantiate(
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 			preload("res://dice.tscn").instantiate(
 			).init(Vector3.ZERO, Vector3.ZERO
 			).set_color(random_color()
-			).set_size( Vector3(0.5, 0.5, 0.5)
+			).set_size( Vector3(0.4, 0.4, 0.4)
 		)))
 	update_label()
 	var t = Time.get_unix_time_from_system() /-3.0
