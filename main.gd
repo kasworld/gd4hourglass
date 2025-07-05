@@ -1,15 +1,8 @@
 extends Node3D
 
 const MaxDrop = 2000
-var deck 
 func _ready() -> void:
-	var vp_size = get_viewport().get_visible_rect().size
-	var 짧은길이 = min(vp_size.x,vp_size.y)
-	#$"왼쪽패널".size = Vector2(vp_size.x/2 - 짧은길이, vp_size.y)
-
 	reset_camera_pos()
-
-	deck = PlayingCard.make_deck_with_joker()
 
 var camera_move = true
 func _process(delta: float) -> void:

@@ -16,9 +16,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10,
 fov = 90.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 visible = false
-shadow_enabled = true
 omni_range = 50.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -47,6 +45,7 @@ text = "중력반전"
 
 [node name="CubeContainer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+visible = false
 
 [node name="GlassCube1" parent="CubeContainer" instance=ExtResource("3_1bvp3")]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 15, 0, 0)

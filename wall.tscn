@@ -9,7 +9,7 @@ bounce = 0.2
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0xm2m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxgf6"]
-albedo_color = Color(0, 1, 0, 1)
+albedo_color = Color(0, 1, 0, 0.498039)
 normal_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0xm2m"]
