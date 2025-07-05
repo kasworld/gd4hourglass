@@ -36,7 +36,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = SubResource("Theme_h2yge")
 
-[node name="Label" type="Label" parent="왼쪽패널"]
+[node name="LabelDrops" type="Label" parent="왼쪽패널"]
+layout_mode = 2
+
+[node name="LabelPerformance" type="Label" parent="왼쪽패널"]
 layout_mode = 2
 
 [node name="중력반전" type="Button" parent="왼쪽패널"]

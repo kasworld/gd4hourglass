@@ -1,51 +1,66 @@
 extends Node3D
 
 const MaxDrop = 2000
+
 func _ready() -> void:
 	reset_camera_pos()
 
+func add_drops() -> void:
+	$DropContainer.add_child(rand_pos_rot(
+		preload("res://ball.tscn").instantiate(
+		).init(Vector3.ZERO, Vector3.ZERO
+		).set_color(random_color()
+		).set_radius(randfn(0.25, 0.05)
+	)))
+	$DropContainer.add_child(rand_pos_rot(
+		preload("res://char.tscn").instantiate(
+		).init(Vector3.ZERO, Vector3.ZERO
+		).set_color(random_color()
+		).set_height_depth( randfn(0.8, 0.1), randfn(0.1,0.01)
+		).set_char(PlayingCard.Symbols.pick_random()
+	)))
+	$DropContainer.add_child(rand_pos_rot(
+		preload("res://coin.tscn").instantiate(
+		).init(Vector3.ZERO, Vector3.ZERO
+		).set_color(random_color()
+		).set_radius_height( randfn(0.4,0.05), randfn(0.1,0.01)
+	)))
+	$DropContainer.add_child(rand_pos_rot(
+		preload("res://capsule.tscn").instantiate(
+		).init(Vector3.ZERO, Vector3.ZERO
+		).set_color(random_color()
+		).set_radius_height( randfn(0.2,0.05), randfn(0.8,0.05)
+	)))
+	$DropContainer.add_child(rand_pos_rot(
+		preload("res://dice.tscn").instantiate(
+		).init(Vector3.ZERO, Vector3.ZERO
+		).set_color(random_color()
+		).set_size( Vector3( randfn(0.4,0.05), randfn(0.4,0.05), randfn(0.4,0.05) )
+	)))
+
 var camera_move = true
 func _process(delta: float) -> void:
-	if $DropContainer.get_child_count() < MaxDrop:
-		$DropContainer.add_child(rand_pos_rot(
-			preload("res://ball.tscn").instantiate(
-			).init(Vector3.ZERO, Vector3.ZERO
-			).set_color(random_color()
-			).set_radius(randfn(0.25, 0.05)
-		)))
-		$DropContainer.add_child(rand_pos_rot(
-			preload("res://char.tscn").instantiate(
-			).init(Vector3.ZERO, Vector3.ZERO
-			).set_color(random_color()
-			).set_height_depth( randfn(0.8, 0.1), randfn(0.1,0.01)
-			).set_char(PlayingCard.Symbols.pick_random()
-		)))
-		$DropContainer.add_child(rand_pos_rot(
-			preload("res://coin.tscn").instantiate(
-			).init(Vector3.ZERO, Vector3.ZERO
-			).set_color(random_color()
-			).set_radius_height( randfn(0.4,0.05), randfn(0.1,0.01)
-		)))
-		$DropContainer.add_child(rand_pos_rot(
-			preload("res://capsule.tscn").instantiate(
-			).init(Vector3.ZERO, Vector3.ZERO
-			).set_color(random_color()
-			).set_radius_height( randfn(0.2,0.05), randfn(0.8,0.05)
-		)))
-		$DropContainer.add_child(rand_pos_rot(
-			preload("res://dice.tscn").instantiate(
-			).init(Vector3.ZERO, Vector3.ZERO
-			).set_color(random_color()
-			).set_size( Vector3( randfn(0.4,0.05), randfn(0.4,0.05), randfn(0.4,0.05) )
-		)))
 	update_label()
 	var t = Time.get_unix_time_from_system() /-3.0
 	if camera_move:
 		$Camera3D.position = Vector3(sin(t)*10, sin(t)*8, cos(t)*10)
 		$Camera3D.look_at(Vector3.ZERO)
 
+func _physics_process(delta: float) -> void:
+	if $DropContainer.get_child_count() < MaxDrop:
+		add_drops()
+
 func update_label() -> void:
-	$"왼쪽패널/Label".text = "%s/%s" %[$DropContainer.get_child_count(), MaxDrop ]
+	$"왼쪽패널/LabelDrops".text = "Drops %s/%s" %[$DropContainer.get_child_count(), MaxDrop ]
+	$"왼쪽패널/LabelPerformance".text = """%d FPS (%.2f mspf)
+%d objects
+%dK primitive indices
+%d draw calls""" % [
+	Engine.get_frames_per_second(),1000.0 / Engine.get_frames_per_second(),
+	RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_OBJECTS_IN_FRAME),
+	RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_PRIMITIVES_IN_FRAME) * 0.001,
+	RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME),
+	]
 
 func rand_pos_rot(n :Node3D) -> Node3D:
 	n.position = Vector3(randf_range(-10,10),randf_range(8,10),randf_range(-10,10))
