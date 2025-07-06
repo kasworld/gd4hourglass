@@ -1,9 +1,10 @@
 extends Node3D
 
 const MaxDrop = 2000
-
+var drop_dur :float
 func _ready() -> void:
 	reset_camera_pos()
+	drop_dur = Time.get_unix_time_from_system()
 
 func add_drops() -> void:
 	$DropContainer.add_child(rand_pos_rot(
@@ -51,6 +52,7 @@ func _physics_process(delta: float) -> void:
 		add_drops()
 
 func update_label() -> void:
+	$"왼쪽패널/LabelTime".text = "%.2f초" % [ Time.get_unix_time_from_system() - drop_dur]
 	$"왼쪽패널/LabelDrops".text = "Drops %s/%s" %[$DropContainer.get_child_count(), MaxDrop ]
 	$"왼쪽패널/LabelPerformance".text = """%d FPS (%.2f mspf)
 %d objects
@@ -105,3 +107,4 @@ func _on_중력반전_pressed() -> void:
 	# Set the default gravity direction to `Vector3(0, -1, 0)`.
 	#PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, Vector3.DOWN)	
 	PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, -current_gravity)	
+	drop_dur = Time.get_unix_time_from_system()

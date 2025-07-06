@@ -46,6 +46,9 @@ layout_mode = 2
 layout_mode = 2
 text = "중력반전"
 
+[node name="LabelTime" type="Label" parent="왼쪽패널"]
+layout_mode = 2
+
 [node name="CubeContainer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 visible = false
