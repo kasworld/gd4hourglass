@@ -63,7 +63,7 @@ func update_label() -> void:
 	]
 
 func rand_pos_rot(n :Node3D) -> Node3D:
-	n.position = Vector3(randf_range(-10,10),randf_range(8,10),randf_range(-10,10))
+	n.position = Vector3(randf_range(-5,5),randf_range(8,9),randf_range(-5,5))
 	#n.position = Vector3(0, 9, 0)
 	n.rotation = Vector3(randf_range(-PI,PI),randf_range(-PI,PI),randf_range(-PI,PI))
 	return n

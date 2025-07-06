@@ -29,4 +29,6 @@ window/size/viewport_height=2160
 
 3d/run_on_separate_thread=true
 3d/physics_engine="Jolt Physics"
+jolt_physics_3d/simulation/allow_sleep=false
+jolt_physics_3d/limits/world_boundary_shape_size=100.0
 common/physics_interpolation=true

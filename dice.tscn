@@ -4,7 +4,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ew7su"]
 friction = 0.5
-bounce = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew7su"]
 resource_local_to_scene = true
